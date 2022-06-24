@@ -1,0 +1,10 @@
+D:\MyWorkspace\LeetCode\LeetCode.Library\bin\Debug\netcoreapp3.1\LeetCode.Library.deps.json
+D:\MyWorkspace\LeetCode\LeetCode.Library\bin\Debug\netcoreapp3.1\LeetCode.Library.dll
+D:\MyWorkspace\LeetCode\LeetCode.Library\bin\Debug\netcoreapp3.1\LeetCode.Library.pdb
+D:\MyWorkspace\LeetCode\LeetCode.Library\obj\Debug\netcoreapp3.1\LeetCode.Library.csproj.AssemblyReference.cache
+D:\MyWorkspace\LeetCode\LeetCode.Library\obj\Debug\netcoreapp3.1\LeetCode.Library.GeneratedMSBuildEditorConfig.editorconfig
+D:\MyWorkspace\LeetCode\LeetCode.Library\obj\Debug\netcoreapp3.1\LeetCode.Library.AssemblyInfoInputs.cache
+D:\MyWorkspace\LeetCode\LeetCode.Library\obj\Debug\netcoreapp3.1\LeetCode.Library.AssemblyInfo.cs
+D:\MyWorkspace\LeetCode\LeetCode.Library\obj\Debug\netcoreapp3.1\LeetCode.Library.csproj.CoreCompileInputs.cache
+D:\MyWorkspace\LeetCode\LeetCode.Library\obj\Debug\netcoreapp3.1\LeetCode.Library.dll
+D:\MyWorkspace\LeetCode\LeetCode.Library\obj\Debug\netcoreapp3.1\LeetCode.Library.pdb
