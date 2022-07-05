@@ -89,5 +89,99 @@ namespace LeetCode.Library
             }
             return maxArea;
         }
+
+        /// <summary>
+        /// 15. 3Sum (medium)
+        /// Given an integer array nums, return all the triplets
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <returns></returns>
+        public IList<IList<int>> ThreeSum(int[] nums)
+        {
+            Array.Sort(nums);
+            IList<IList<int>> result = new List<IList<int>>();
+            for (int pivot = 0; pivot < nums.Length; pivot++)
+            {
+                if (pivot > 0 && nums[pivot] == nums[pivot - 1])
+                {
+                    continue;
+                }
+
+                int targetSum = -(nums[pivot]);
+
+                int startIndex = pivot + 1;
+                int endIndex = nums.Length - 1;
+                while (startIndex < endIndex)
+                {
+                    int sumOfValuesAtStartAndEndIndex = nums[startIndex] + nums[endIndex];
+                    if (sumOfValuesAtStartAndEndIndex == targetSum)
+                    {
+                        result.Add(new int[] { nums[pivot], nums[startIndex], nums[endIndex] });
+
+                        //No need to look at the same number if its already is in the result.
+                        while (startIndex < endIndex && nums[startIndex] == nums[startIndex + 1])
+                        {
+                            startIndex++;
+                        }
+
+                        while (startIndex < endIndex && nums[endIndex] == nums[endIndex - 1])
+                        {
+                            endIndex--;
+                        }
+
+                        startIndex++;
+                        endIndex--;
+                    }
+                    else
+                    {
+                        if (sumOfValuesAtStartAndEndIndex < targetSum)
+                        {
+                            startIndex++;
+                        }
+                        else
+                        {
+                            endIndex--;
+                        }
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// 16. 3Sum Closest (medium)
+        /// Given an integer array nums of length n and an integer target, find three integers in nums such that the sum is closest to target.
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <param name="target"></param>
+        /// <returns>the sum of the three integers</returns>
+        public int ThreeSumClosest(int[] nums, int target)
+        {
+            Array.Sort(nums);
+            int minDiff = int.MaxValue;
+            int result = 0;
+            for (int i = 0; i < nums.Length - 2; i++)
+            {
+                int start = i + 1;
+                int end = nums.Length - 1;
+                while (start < end)
+                {
+                    int sum = nums[i] + nums[start] + nums[end];
+                    if (Math.Abs(sum - target) < minDiff)
+                    {
+                        minDiff = Math.Abs(sum - target);
+                        result = sum;
+                    }
+                    if (sum < target)
+                        start++;
+                    else if (sum > target)
+                        end--;
+                    else
+                        return sum;
+                }
+            }
+            return result;
+        }
     }
 }

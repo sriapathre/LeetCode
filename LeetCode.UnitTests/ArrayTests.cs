@@ -1,5 +1,6 @@
 using LeetCode.Library;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace LeetCode.UnitTests
@@ -68,6 +69,24 @@ namespace LeetCode.UnitTests
         {
             int expectedResult = 49;
             var actualResult = arrays.MaxArea(Input.NumberArrays[3]);
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+        [TestMethod]
+        public void ThreeSum_Test1()
+        {
+            var expectedResult = new List<IList<int>>() { new List<int>() { -1, -1, 2 }, new List<int>() { -1, 0, 1 } };
+            var actualResult = arrays.ThreeSum(Input.NumberArrays[4]);
+            Assert.AreEqual(expectedResult.Count, actualResult.Count);
+            for (int i = 0; i < expectedResult.Count; i++)
+            {
+                Assert.IsTrue(expectedResult[i].SequenceEqual(actualResult[i]));
+            }
+        }
+        [TestMethod]
+        public void ThreeSumClosest_Test1()
+        {
+            var expectedResult = 2;
+            var actualResult = arrays.ThreeSumClosest(Input.NumberArrays[5],1);
             Assert.AreEqual(expectedResult, actualResult);
         }
     }
