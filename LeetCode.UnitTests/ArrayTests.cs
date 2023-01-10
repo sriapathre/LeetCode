@@ -89,5 +89,33 @@ namespace LeetCode.UnitTests
             var actualResult = arrays.ThreeSumClosest(Input.NumberArrays[5],1);
             Assert.AreEqual(expectedResult, actualResult);
         }
+        [TestMethod]
+        public void RemoveDuplicates_Test1()
+        {
+            var expectedResult = 7;
+            var actualResult = arrays.RemoveDuplicates(Input.SortedNumberArrays[4]);
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+        [TestMethod]
+        public void RemoveDuplicates_Test2()
+        {
+            var expectedResult = 5;
+            var actualResult = arrays.RemoveDuplicates(Input.SortedNumberArrays[3]);
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+        [TestMethod]
+        public void RemoveElement_Test1()
+        {
+            var expectedResult = 8;
+            var actualResult = arrays.RemoveElement(Input.SortedNumberArrays[5],6);
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+        [TestMethod]
+        public void RemoveElement_Test2()
+        {
+            var expectedResult = 4;
+            var actualResult = arrays.RemoveElement(Input.SortedNumberArrays[3],7);
+            Assert.AreEqual(expectedResult, actualResult);
+        }
     }
 }

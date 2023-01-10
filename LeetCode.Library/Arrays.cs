@@ -183,5 +183,63 @@ namespace LeetCode.Library
             }
             return result;
         }
+
+        /// <summary>
+        /// 26. Remove Duplicates from Sorted Array (easy)
+        /// Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same.
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <returns></returns>
+        public int RemoveDuplicates(int[] nums)
+        {
+            int fast = 1;
+            int slow = 1;
+
+            while (fast < nums.Length)
+            {
+                if (nums[fast - 1] == nums[fast])
+                {
+                    fast++;
+                    continue;
+                }
+
+                nums[slow] = nums[fast];
+                fast++;
+                slow++;
+            }
+            return slow;
+        }
+
+        /// <summary>
+        /// 27. Remove Element (easy)
+        /// Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The relative order of the elements may be changed.
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <param name="val"></param>
+        /// <returns></returns>
+        public int RemoveElement(int[] nums, int val)
+        {
+            int replacementCount = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (nums[i] == val)
+                {
+                    for (int j = i; j < nums.Length - 1; j++)
+                    {
+                        nums[j] = nums[j + 1];
+                    }
+
+                    nums[nums.Length - 1] = -1015;
+                    replacementCount += 1;
+
+                    if (nums[i] == val)
+                    {
+                        i -= 1;
+                    }
+                }
+            }
+
+            return nums.Length - replacementCount;
+        }
     }
 }

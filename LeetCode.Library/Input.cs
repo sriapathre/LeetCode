@@ -20,7 +20,9 @@ namespace LeetCode.Library
             new int[] { 1,2 },
             new int[] { 3 },
             new int[] { 3,4 },
-            new int[] { 3,4,5,6,7 },
+            new int[] { 3,4,5,6,7},
+            new int[] { 1,1,2,3,4,5,5,6,6,7},
+            new int[] { 2,3,4,5,5,6,6,7,8,9},
         };
     }
 }
