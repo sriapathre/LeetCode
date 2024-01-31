@@ -241,5 +241,45 @@ namespace LeetCode.Library
 
             return nums.Length - replacementCount;
         }
+
+        /// <summary>
+        /// 169. Majority Element (easy)
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <returns></returns>
+        public int MajorityElement(int[] nums)
+        {
+            Dictionary<int, int> dict = new Dictionary<int, int>();
+            foreach (int i in nums)
+            {
+                if (dict.ContainsKey(i))
+                {
+                    if (dict[i] + 1 > nums.Length / 2)
+                        return i;
+                    dict[i] += 1;
+                }
+                else
+                    dict.Add(i, 1);
+            }
+            return nums[0];
+        }
+
+        /// <summary>
+        /// 217. Contains Duplicate
+        /// Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <returns></returns>
+        public bool ContainsDuplicate(int[] nums)
+        {
+            HashSet<int> result = new HashSet<int>();
+            foreach (int num in nums)
+            {
+                if (result.Contains(num))
+                    return true;
+                result.Add(num);
+            }
+            return false;
+        }
     }
 }
