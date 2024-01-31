@@ -16,6 +16,29 @@ namespace LeetCode.UnitTests
         {
             numeric = new Numeric();
         }
+        [TestMethod]
+        public void IsPalindrome_Test1()
+        {
+            var expectedResult = true;
+            var actualResult = numeric.IsPalindrome(7612167);
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void IsPalindrome_Test2()
+        {
+            var expectedResult = false;
+            var actualResult = numeric.IsPalindrome(-121);
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void IsPalindrome_Test3()
+        {
+            var expectedResult = false;
+            var actualResult = numeric.IsPalindrome(10);
+            Assert.AreEqual(expectedResult, actualResult);
+        }
 
         [TestMethod]
         public void CanWinNim_Test1()

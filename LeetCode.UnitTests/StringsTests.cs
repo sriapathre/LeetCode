@@ -234,5 +234,29 @@ namespace LeetCode.UnitTests
             var actualResult = strings.IsAnagram("aacc", "ccac");
             Assert.AreEqual(expectedResult, actualResult);
         }
+
+        [TestMethod]
+        public void RomanToInt_Test1()
+        {
+            var expectedResult = 3;
+            var actualResult = strings.RomanToInt("III");
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void RomanToInt_Test2()
+        {
+            var expectedResult = 58;
+            var actualResult = strings.RomanToInt("LVIII");
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void RomanToInt_Test3()
+        {
+            var expectedResult = 1994;
+            var actualResult = strings.RomanToInt("MCMXCIV");
+            Assert.AreEqual(expectedResult, actualResult);
+        }
     }
 }

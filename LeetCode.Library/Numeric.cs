@@ -7,6 +7,23 @@ namespace LeetCode.Library
     public class Numeric
     {
         /// <summary>
+        /// 9. Palindrome Number (easy)
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns></returns>
+        public bool IsPalindrome(int x)
+        {
+            if (x < 0) return false;
+            int original = x;
+            int reversed = 0;
+            while (x > 0)
+            {
+                reversed = reversed * 10 + x % 10;
+                x /= 10;
+            }
+            return reversed == original;
+        }
+        /// <summary>
         /// 168. Excel Sheet Column Title
         /// Given an integer columnNumber, return its corresponding column title as it appears in an Excel sheet.
         /// </summary>
@@ -21,7 +38,7 @@ namespace LeetCode.Library
                 sb.Insert(0, (char)('A' + columnNumber % 26));
                 columnNumber /= 26;
             }
-           
+
             return sb.ToString();
         }
 
@@ -32,11 +49,11 @@ namespace LeetCode.Library
         /// <returns></returns>
         public bool IsHappy(int n)
         {
-            if(n == 1)
+            if (n == 1)
             {
                 return true;
             }
-            HashSet<int> seen = new HashSet<int>();            
+            HashSet<int> seen = new HashSet<int>();
             while (n != 1)
             {
                 int sum = 0;

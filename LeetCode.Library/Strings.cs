@@ -9,6 +9,38 @@ namespace LeetCode.Library
     public class Strings
     {
         /// <summary>
+        /// 13. Roman to Integer (easy)
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public int RomanToInt(string s)
+        {
+            Dictionary<char, int> RomanValues = new Dictionary<char, int>()
+            {
+                {'I', 1},
+                {'V', 5},
+                {'X', 10},
+                {'L', 50},
+                {'C', 100},
+                {'D', 500},
+                {'M', 1000}
+            };
+            int result = 0;
+
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (i + 1 < s.Length && RomanValues[s[i]] < RomanValues[s[i + 1]])
+                {
+                    result += (RomanValues[s[i + 1]] - RomanValues[s[i]]);
+                    i++;
+                }
+                else
+                    result += RomanValues[s[i]];
+            }
+            return result;
+        }
+
+        /// <summary>
         /// 171. Excel Sheet Column Number (easy)
         /// </summary>
         /// <param name="columnTitle"></param>
