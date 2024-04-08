@@ -70,7 +70,7 @@ namespace LeetCode.Library
         }
 
         /// <summary>
-        /// 101. Symmetric Tree
+        /// 101. Symmetric Tree (easy)
         /// Given the root of a binary tree, check whether it is a mirror of itself (i.e., symmetric around its center).
         /// </summary>
         /// <param name="root"></param>

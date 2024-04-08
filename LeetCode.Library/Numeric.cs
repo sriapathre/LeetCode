@@ -134,7 +134,7 @@ namespace LeetCode.Library
         }
 
         /// <summary>
-        /// 326. Power of Three
+        /// 326. Power of Three (easy)
         /// </summary>
         /// <param name="n"></param>
         /// <returns></returns>

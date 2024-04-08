@@ -39,7 +39,7 @@ namespace LeetCode.Library
         }
 
         /// <summary>
-        /// 20. Valid Parentheses
+        /// 20. Valid Parentheses (easy)
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
@@ -73,7 +73,7 @@ namespace LeetCode.Library
         }
 
         /// <summary>
-        /// 28. Find the Index of the First Occurrence in a String
+        /// 28. Find the Index of the First Occurrence in a String (easy)
         /// </summary>
         /// <param name="haystack"></param>
         /// <param name="needle"></param>

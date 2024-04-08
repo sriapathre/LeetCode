@@ -17,7 +17,7 @@
     public class LinkedLists
     {
         /// <summary>
-        /// 21. Merge Two Sorted Lists
+        /// 21. Merge Two Sorted Lists (easy)
         /// </summary>
         /// <param name="list1"></param>
         /// <param name="list2"></param>
@@ -72,7 +72,7 @@
         }
 
         /// <summary>
-        /// 203. Remove Linked List Elements
+        /// 203. Remove Linked List Elements (easy)
         /// </summary>
         /// <param name="head"></param>
         /// <param name="val"></param>
@@ -109,7 +109,7 @@
         }
 
         /// <summary>
-        /// 206. Reverse Linked List
+        /// 206. Reverse Linked List (easy)
         /// </summary>
         /// <param name="head"></param>
         /// <returns></returns>
