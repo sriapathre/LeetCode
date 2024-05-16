@@ -230,5 +230,47 @@ namespace LeetCode.UnitTests
             var actualResult = numeric.ClimbStairs(4);
             Assert.AreEqual(expectedResult, actualResult);
         }
+
+        [TestMethod]
+        public void Generte_Test1()
+        {
+            var expectedResult = new List<List<int>>() { new List<int>() { 1 } };
+            var actualResult = numeric.Generate(1);
+            Assert.AreEqual(expectedResult.Count, actualResult.Count);
+            for(int i = 0; i < expectedResult.Count; i++)
+            {
+                Assert.IsTrue(expectedResult[i].SequenceEqual(actualResult[i]));
+            }
+        }
+
+        [TestMethod]
+        public void Generte_Test2()
+        {
+            var expectedResult = new List<List<int>>() { new List<int>() { 1 }, new List<int>() { 1, 1 } };
+            var actualResult = numeric.Generate(2);
+            Assert.AreEqual(expectedResult.Count, actualResult.Count);
+            for (int i = 0; i < expectedResult.Count; i++)
+            {
+                Assert.IsTrue(expectedResult[i].SequenceEqual(actualResult[i]));
+            }
+        }
+
+        [TestMethod]
+        public void Generte_Test3()
+        {
+            var expectedResult = new List<List<int>>() {
+                new List<int>() { 1 },
+                new List<int>() { 1, 1 },
+                new List<int>() { 1, 2, 1 } ,
+                new List<int>() { 1, 3, 3, 1 } ,
+                new List<int>() { 1, 4, 6, 4, 1}
+            };
+            var actualResult = numeric.Generate(5);
+            Assert.AreEqual(expectedResult.Count, actualResult.Count);
+            for (int i = 0; i < expectedResult.Count; i++)
+            {
+                Assert.IsTrue(expectedResult[i].SequenceEqual(actualResult[i]));
+            }
+        }
     }
 }

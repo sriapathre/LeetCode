@@ -7,7 +7,7 @@ namespace LeetCode.Library
     public class Numeric
     {
         /// <summary>
-        /// 9. Palindrome Number (easy)
+        /// <a href="https://leetcode.com/problems/palindrome-number">9. Palindrome Number (easy)</a>
         /// </summary>
         /// <param name="x"></param>
         /// <returns></returns>
@@ -25,7 +25,7 @@ namespace LeetCode.Library
         }
 
         /// <summary>
-        /// 69. Sqrt(x) (easy)
+        /// <a href="https://leetcode.com/problems/sqrtx/">69. Sqrt(x) (easy)</a>
         /// Given a non-negative integer x, return the square root of x rounded down to the nearest integer. The returned integer should be non-negative as well.
         /// </summary>
         /// <param name="x"></param>
@@ -51,7 +51,7 @@ namespace LeetCode.Library
         }
 
         /// <summary>
-        /// 70. Climbing Stairs (easy)
+        /// <a href"https://leetcode.com/problems/climbing-stairs/">70. Climbing Stairs (easy)</a>
         /// You are climbing a staircase. It takes n steps to reach the top.
         /// Each time you can either climb 1 or 2 steps.In how many distinct ways can you climb to the top?
         /// </summary>
@@ -74,7 +74,39 @@ namespace LeetCode.Library
         }
 
         /// <summary>
-        /// 168. Excel Sheet Column Title
+        /// <a href="https://leetcode.com/problems/pascals-triangle/">118. Pascal's Triangle (easy)</a>
+        /// Given an integer numRows, return the first numRows of Pascal's triangle.
+        /// </summary>
+        /// <param name="numRows"></param>
+        /// <returns></returns>
+        public IList<IList<int>> Generate(int numRows)
+        {
+            List<IList<int>> result = new List<IList<int>>();
+            List<int> lastrow = new List<int>();
+            while (numRows-- > 0)
+            {
+                List<int> newrow = new List<int>();
+                if (lastrow.Count == 0)
+                {
+                    newrow.Add(1);
+                }
+                else
+                {
+                    newrow.Add(1);
+                    for (int i = 0; i < lastrow.Count - 1; i++)
+                    {
+                        newrow.Add(lastrow[i] + lastrow[i + 1]);
+                    }
+                    newrow.Add(1);
+                }
+                result.Add(newrow);
+                lastrow = newrow;
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// <a href="https://leetcode.com/problems/excel-sheet-column-title/description/">168. Excel Sheet Column Title</a>
         /// Given an integer columnNumber, return its corresponding column title as it appears in an Excel sheet.
         /// </summary>
         /// <param name="columnNumber"></param>
@@ -93,7 +125,7 @@ namespace LeetCode.Library
         }
 
         /// <summary>
-        /// 202. Happy Number (easy)
+        /// <a href="https://leetcode.com/problems/happy-number/">202. Happy Number (easy)</a>
         /// </summary>
         /// <param name="n"></param>
         /// <returns></returns>
@@ -123,7 +155,7 @@ namespace LeetCode.Library
         }
 
         /// <summary>
-        /// 292. Nim Game (easy)
+        /// <a href="https://leetcode.com/problems/nim-game/">292. Nim Game (easy)</a>
         /// Given n, the number of stones in the heap, return true if you can win the game assuming both you and your friend play optimally, otherwise return false.
         /// </summary>
         /// <param name="n"></param>
@@ -134,7 +166,7 @@ namespace LeetCode.Library
         }
 
         /// <summary>
-        /// 326. Power of Three (easy)
+        /// <a href="https://leetcode.com/problems/power-of-three/">326. Power of Three (easy)</a>
         /// </summary>
         /// <param name="n"></param>
         /// <returns></returns>
@@ -161,7 +193,7 @@ namespace LeetCode.Library
 
 
         /// <summary>
-        /// 412. Fizz Buzz (easy)
+        /// <a href="https://leetcode.com/problems/fizz-buzz/">412. Fizz Buzz (easy)</a>
         /// </summary>
         /// <param name="n"></param>
         /// <returns></returns>
@@ -183,7 +215,7 @@ namespace LeetCode.Library
         }
 
         /// <summary>
-        /// 441. Arranging Coins (easy)
+        /// <a href="https://leetcode.com/problems/arranging-coins/">441. Arranging Coins (easy)</a>
         /// </summary>
         /// <param name="n"></param>
         /// <returns></returns>
