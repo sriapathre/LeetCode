@@ -7,7 +7,7 @@ namespace LeetCode.Library
     public class Arrays
     {
         /// <summary>
-        /// 1. Two Sum (easy)
+        /// <a href="">1. Two Sum (easy)</a>
         /// Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
         /// </summary>
         /// <param name="nums"></param>
@@ -28,7 +28,7 @@ namespace LeetCode.Library
         }
 
         /// <summary>
-        /// 4. Median of Two Sorted Arrays (hard)
+        /// <a href="">4. Median of Two Sorted Arrays (hard)</a>
         /// Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.
         /// </summary>
         /// <param name="nums1">Sorted Array 1</param>
@@ -69,7 +69,7 @@ namespace LeetCode.Library
         }
 
         /// <summary>
-        /// 11. Container With Most Water (medium)
+        /// <a href="">11. Container With Most Water (medium)</a>
         /// Find two lines that together with the x-axis form a container, such that the container contains the most water.
         /// </summary>
         /// <param name="height"></param>
@@ -92,7 +92,7 @@ namespace LeetCode.Library
         }
 
         /// <summary>
-        /// 14. Longest Common Prefix (easy)
+        /// <a href="">14. Longest Common Prefix (easy)</a>
         /// </summary>
         /// <param name="strs"></param>
         /// <returns></returns>
@@ -116,7 +116,7 @@ namespace LeetCode.Library
         }
 
         /// <summary>
-        /// 15. 3Sum (medium)
+        /// <a href="">15. 3Sum (medium)</a>
         /// Given an integer array nums, return all the triplets
         /// </summary>
         /// <param name="nums"></param>
@@ -175,7 +175,7 @@ namespace LeetCode.Library
         }
 
         /// <summary>
-        /// 16. 3Sum Closest (medium)
+        /// <a href="">16. 3Sum Closest (medium)</a>
         /// Given an integer array nums of length n and an integer target, find three integers in nums such that the sum is closest to target.
         /// </summary>
         /// <param name="nums"></param>
@@ -210,7 +210,7 @@ namespace LeetCode.Library
         }
 
         /// <summary>
-        /// 26. Remove Duplicates from Sorted Array (easy)
+        /// <a href="">26. Remove Duplicates from Sorted Array (easy)</a>
         /// Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same.
         /// </summary>
         /// <param name="nums"></param>
@@ -236,7 +236,7 @@ namespace LeetCode.Library
         }
 
         /// <summary>
-        /// 27. Remove Element (easy)
+        /// <a href="">27. Remove Element (easy)</a>
         /// Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The relative order of the elements may be changed.
         /// </summary>
         /// <param name="nums"></param>
@@ -268,7 +268,7 @@ namespace LeetCode.Library
         }
 
         /// <summary>
-        /// 35. Search Insert Position (easy)
+        /// <a href="">35. Search Insert Position (easy)</a>
         /// </summary>
         /// <param name="nums"></param>
         /// <param name="target"></param>
@@ -290,7 +290,7 @@ namespace LeetCode.Library
         }
 
         /// <summary>
-        /// 66. Plus One (easy)
+        /// <a href="">66. Plus One (easy)</a>
         /// You are given a large integer represented as an integer array digits, where each digits[i] is the ith digit of the integer. The digits are ordered from most significant to least significant in left-to-right order. The large integer does not contain any leading 0's.
         /// Increment the large integer by one and return the resulting array of digits.
         /// </summary>
@@ -321,7 +321,7 @@ namespace LeetCode.Library
             return digits;
         }
         /// <summary>
-        /// 88. Merge Sorted Array (easy)
+        /// <a href="">88. Merge Sorted Array (easy)</a>
         /// You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n, representing the number of elements in nums1 and nums2 respectively.
         /// Merge nums1 and nums2 into a single array sorted in non-decreasing order.
         /// </summary>
@@ -354,7 +354,7 @@ namespace LeetCode.Library
         }
 
         /// <summary>
-        /// 169. Majority Element (easy)
+        /// <a href="">169. Majority Element (easy)</a>
         /// </summary>
         /// <param name="nums"></param>
         /// <returns></returns>
@@ -376,7 +376,7 @@ namespace LeetCode.Library
         }
 
         /// <summary>
-        /// 217. Contains Duplicate
+        /// <a href="">217. Contains Duplicate</a>
         /// Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
         /// </summary>
         /// <param name="nums"></param>
