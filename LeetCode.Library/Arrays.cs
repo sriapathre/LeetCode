@@ -354,6 +354,16 @@ namespace LeetCode.Library
         }
 
         /// <summary>
+        /// <a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/">121. Best Time to Buy and Sell Stock (easy)</a>
+        /// </summary>
+        /// <param name="prices"></param>
+        /// <returns></returns>
+        public int MaxProfit(int[] prices)
+        {
+            return -1;
+        }
+
+        /// <summary>
         /// <a href="">169. Majority Element (easy)</a>
         /// </summary>
         /// <param name="nums"></param>

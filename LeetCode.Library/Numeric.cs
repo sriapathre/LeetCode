@@ -106,6 +106,26 @@ namespace LeetCode.Library
         }
 
         /// <summary>
+        /// <a href="https://leetcode.com/problems/pascals-triangle-ii/">119. Pascal's Triangle II (easy)</a>
+        /// Given an integer rowIndex, return the rowIndexth (0-indexed) row of the Pascal's triangle.
+        /// </summary>
+        /// <param name="rowIndex"></param>
+        /// <returns></returns>
+        public IList<int> GetRow(int rowIndex)
+        {
+            var list = new List<int>(rowIndex + 1) { 1 };
+            for (int row = 1; row <= rowIndex; row++)
+            {
+                for (int i = row - 1; i >= 1; i--)
+                {
+                    list[i] += list[i - 1];
+                }
+                list.Add(1);
+            }
+            return list;
+        }
+
+        /// <summary>
         /// <a href="https://leetcode.com/problems/excel-sheet-column-title/description/">168. Excel Sheet Column Title</a>
         /// Given an integer columnNumber, return its corresponding column title as it appears in an Excel sheet.
         /// </summary>

@@ -237,7 +237,7 @@ namespace LeetCode.UnitTests
             var expectedResult = new List<List<int>>() { new List<int>() { 1 } };
             var actualResult = numeric.Generate(1);
             Assert.AreEqual(expectedResult.Count, actualResult.Count);
-            for(int i = 0; i < expectedResult.Count; i++)
+            for (int i = 0; i < expectedResult.Count; i++)
             {
                 Assert.IsTrue(expectedResult[i].SequenceEqual(actualResult[i]));
             }
@@ -271,6 +271,32 @@ namespace LeetCode.UnitTests
             {
                 Assert.IsTrue(expectedResult[i].SequenceEqual(actualResult[i]));
             }
+        }
+
+        [TestMethod]
+        public void GetRow_Test1()
+        {
+            var expectedResult = new List<int>() { 1 };
+            var actualResult = numeric.GetRow(0);
+            Assert.AreEqual(expectedResult.Count, actualResult.Count);
+            Assert.IsTrue(expectedResult.SequenceEqual(actualResult));
+        }
+        [TestMethod]
+        public void GetRow_Test2()
+        {
+            var expectedResult = new List<int>() { 1, 3, 3, 1 };
+            var actualResult = numeric.GetRow(3);
+            Assert.AreEqual(expectedResult.Count, actualResult.Count);
+            Assert.IsTrue(expectedResult.SequenceEqual(actualResult));
+        }
+
+        [TestMethod]
+        public void GetRow_Test3()
+        {
+            var expectedResult = new List<int>() { 1, 5, 10, 10, 5, 1 };
+            var actualResult = numeric.GetRow(5);
+            Assert.AreEqual(expectedResult.Count, actualResult.Count);
+            Assert.IsTrue(expectedResult.SequenceEqual(actualResult));
         }
     }
 }
