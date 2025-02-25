@@ -140,6 +140,30 @@ namespace LeetCode.Library
             }
             return sb.ToString();
         }
+
+        /// <summary>
+        /// <a href="https://leetcode.com/problems/valid-palindrome/">125. Valid Palindrome (easy)</a>
+        /// A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
+        /// </summary>
+        /// <param name="s">a string s</param>
+        /// <returns>true if it is a palindrome, or false otherwise</returns>
+        public bool IsPalindrome(string s)
+        {
+            if (String.IsNullOrEmpty(s) && s.Length == 0)
+                return true;
+            int start = 0, last = s.Length - 1;
+            while (start < last)
+            {
+                while (start < s.Length && !Char.IsLetter(s[start]) && !Char.IsDigit(s[start]))
+                    start++;
+                while (last >= 0 && !Char.IsLetter(s[last]) && !Char.IsDigit(s[last]))
+                    last--;
+                if (start < last && !Char.ToUpper(s[start++]).Equals(Char.ToUpper(s[last--])))
+                    return false;
+            }
+            return true;
+        }
+
         /// <summary>
         /// 171. Excel Sheet Column Number (easy)
         /// </summary>

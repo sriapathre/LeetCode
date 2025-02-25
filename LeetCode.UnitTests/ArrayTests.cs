@@ -283,5 +283,40 @@ namespace LeetCode.UnitTests
             Assert.IsTrue(expectedResult.SequenceEqual(input1));
         }
 
+        [TestMethod]
+        public void MaxProfit_Test1()
+        {
+            var input = new int[] { 7, 1, 5, 3, 6, 4 };
+            Assert.AreEqual(5, arrays.MaxProfit(input));
+        }
+
+        [TestMethod]
+        public void MaxProfit_Test2()
+        {
+            var input = new int[] { 7, 6, 4, 3, 1 };
+            Assert.AreEqual(0, arrays.MaxProfit(input));
+        }
+
+        [TestMethod]
+        public void SingleNumber_Test1()
+        {
+            var input = new int[] { 2, 2, 1 };
+            Assert.AreEqual(1, arrays.SingleNumber(input));
+        }
+
+        [TestMethod]
+        public void SingleNumber_Test2()
+        {
+            var input = new int[] { 4, 1, 2, 1, 2 };
+            Assert.AreEqual(4, arrays.SingleNumber(input));
+        }
+
+        [TestMethod]
+        public void SingleNumber_Test3()
+        {
+            var input = new int[] { 1 };
+            Assert.AreEqual(1, arrays.SingleNumber(input));
+        }
+
     }
 }

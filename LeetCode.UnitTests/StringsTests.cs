@@ -354,5 +354,23 @@ namespace LeetCode.UnitTests
             var actualResult = strings.AddBinary("100", "10");
             Assert.AreEqual(expectedResult, actualResult);
         }
+
+        [TestMethod]
+        public void IsPalindrome_Test1()
+        {
+            Assert.IsTrue(strings.IsPalindrome("A man, a plan, a canal: Panama"));
+        }
+
+        [TestMethod]
+        public void IsPalindrome_Test2()
+        {
+            Assert.IsFalse(strings.IsPalindrome("race a car"));
+        }
+
+        [TestMethod]
+        public void IsPalindrome_Test3()
+        {
+            Assert.IsTrue(strings.IsPalindrome(" "));
+        }
     }
 }

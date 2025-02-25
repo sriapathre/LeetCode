@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace LeetCode.Library
@@ -290,7 +291,7 @@ namespace LeetCode.Library
         }
 
         /// <summary>
-        /// <a href="">66. Plus One (easy)</a>
+        /// <a href="https://leetcode.com/problems/plus-one/">66. Plus One (easy)</a>
         /// You are given a large integer represented as an integer array digits, where each digits[i] is the ith digit of the integer. The digits are ordered from most significant to least significant in left-to-right order. The large integer does not contain any leading 0's.
         /// Increment the large integer by one and return the resulting array of digits.
         /// </summary>
@@ -321,7 +322,7 @@ namespace LeetCode.Library
             return digits;
         }
         /// <summary>
-        /// <a href="">88. Merge Sorted Array (easy)</a>
+        /// <a href="https://leetcode.com/problems/merge-sorted-array/">88. Merge Sorted Array (easy)</a>
         /// You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n, representing the number of elements in nums1 and nums2 respectively.
         /// Merge nums1 and nums2 into a single array sorted in non-decreasing order.
         /// </summary>
@@ -354,13 +355,41 @@ namespace LeetCode.Library
         }
 
         /// <summary>
-        /// <a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/">121. Best Time to Buy and Sell Stock (easy)</a>
+        /// <a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/">121. Best Time to Buy and Sell Stock (easy)</a>
         /// </summary>
         /// <param name="prices"></param>
         /// <returns></returns>
         public int MaxProfit(int[] prices)
         {
-            return -1;
+            if (prices == null || prices.Length <= 1)
+                return 0;
+            int profit = 0, buy = prices[0];
+            for (int i = 1; i < prices.Length; i++)
+            {
+                if (prices[i] - buy > profit)
+                    profit = prices[i] - buy;
+                if (prices[i] < buy)
+                    buy = prices[i];
+            }
+            return profit;
+        }
+
+        /// <summary>
+        /// <a href="https://leetcode.com/problems/single-number/">136. Single Number (easy)</a>
+        /// Given a non-empty array of integers nums, every element appears twice except for one. Find that single one. 
+        /// You must implement a solution with a linear runtime complexity and use only constant extra space.
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <returns></returns>
+        public int SingleNumber(int[] nums)
+        {
+            HashSet<int> unique = new HashSet<int>();
+            for (int i = 0; i < nums.Length; i++)
+            {
+                unique.Add(nums[i]);
+            }
+
+            return 2 * unique.Sum() - nums.Sum();
         }
 
         /// <summary>
@@ -386,7 +415,7 @@ namespace LeetCode.Library
         }
 
         /// <summary>
-        /// <a href="">217. Contains Duplicate</a>
+        /// <a href="">217. Contains Duplicate (easy)</a>
         /// Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
         /// </summary>
         /// <param name="nums"></param>
