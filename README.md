@@ -1,9 +1,9 @@
-1. Two Sum (easy)
-4. Median of Two Sorted Arrays (hard)
-9. Palindrome Number (easy)
-11. Container With Most Water (medium)
-13. Roman to Integer (easy)
-14. Longest Common Prefix (easy)
+1) Two Sum (easy)
+4) Median of Two Sorted Arrays (hard)
+9) Palindrome Number (easy)
+11) Container With Most Water (medium)
+13) Roman to Integer (easy)
+14) Longest Common Prefix (easy)
 15. 3Sum (medium)
 16. 3Sum Closest (medium)
 20. Valid Parentheses (easy)
@@ -27,6 +27,7 @@
 110. Balanced Binary Tree (easy)
 111. Minimum Depth of Binary Tree (easy)
 112. Path Sum (easy)
+121. Best Time to Buy and Sell Stock
 168. Excel Sheet Column Title
 169. Majority Element (easy)
 171. Excel Sheet Column Number (easy)
