@@ -217,6 +217,101 @@ namespace LeetCode.UnitTests
             TreeNode root = new TreeNode(1, new TreeNode(2, new TreeNode(4), new TreeNode(5)), new TreeNode(3));
             Assert.IsTrue(trees.HasPathSum(root, 8));
         }
+        
+       
+        [TestMethod]
+        public void PreorderTraversal_Test1()
+        {
+            // Arrange
+            var root = new TreeNode(1);
 
+            // Act
+            var result = trees.PreorderTraversal(root);
+
+            // Assert
+            Assert.IsTrue(result.SequenceEqual(new List<int> { 1 }));
+        }
+
+        [TestMethod]
+        public void PreorderTraversal_Test2()
+        {
+            // Arrange
+            var root = new TreeNode(1,
+                new TreeNode(2,
+                    new TreeNode(4),
+                    new TreeNode(5)),
+                new TreeNode(3));
+
+            // Act
+            var result = trees.PreorderTraversal(root);
+
+            // Assert
+            Assert.IsTrue(result.SequenceEqual(new List<int> { 1, 2, 4, 5, 3 }));
+        }        
+
+        [TestMethod]
+        public void PreorderTraversal_Test3()
+        {
+            // Arrange
+            var root = new TreeNode(1,
+                null,
+                new TreeNode(2,
+                    null,
+                    new TreeNode(3,
+                        null,
+                        new TreeNode(4))));
+
+            // Act
+            var result = trees.PreorderTraversal(root);
+
+            // Assert
+            Assert.IsTrue(result.SequenceEqual(new List<int> { 1, 2, 3, 4 }));
+        }
+
+        [TestMethod]
+        public void PostorderTraversal_Test1()
+        {
+            // Arrange
+            var root = new TreeNode(1);
+
+            // Act
+            var result = trees.PostorderTraversal(root);
+
+            // Assert
+            Assert.IsTrue(result.SequenceEqual(new List<int> { 1 }));
+        }
+
+        [TestMethod]
+        public void PostorderTraversal_Test2()
+        {
+            // Arrange
+            var root = new TreeNode(1,
+                new TreeNode(2,
+                    new TreeNode(4),
+                    new TreeNode(5)),
+                new TreeNode(3));
+
+            // Act
+            var result = trees.PostorderTraversal(root);
+
+            // Assert
+            Assert.IsTrue(result.SequenceEqual(new List<int> { 4, 5, 2, 3, 1 }));
+        }
+
+        [TestMethod]
+        public void PostorderTraversal_Test3()
+        {
+            // Arrange
+            var root = new TreeNode(1,
+                new TreeNode(2,
+                    new TreeNode(3,
+                        new TreeNode(4))));
+
+            // Act
+            var result = trees.PostorderTraversal(root);
+
+            // Assert
+            Assert.IsTrue(result.SequenceEqual(new List<int> { 4, 3, 2, 1 }));
+        }
     }
 }

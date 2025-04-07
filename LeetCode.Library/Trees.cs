@@ -205,5 +205,52 @@ namespace LeetCode.Library
             }
             return false;
         }
+
+        /// <summary>
+        /// <a href="https://leetcode.com/problems/binary-tree-preorder-traversal">144. Binary Tree Preorder Traversal (easy)</a>
+        /// Given the root of a binary tree, return the preorder traversal of its nodes' values.
+        /// </summary>
+        /// <param name="root"></param>
+        /// <returns></returns>
+        public IList<int> PreorderTraversal(TreeNode root)
+        {
+            List<int> res = new List<int>();
+            if (root == null) return res;
+            Stack<TreeNode> stack = new Stack<TreeNode>();
+            stack.Push(root);
+
+            while (stack.Count > 0)
+            {
+                TreeNode node = stack.Pop();
+                res.Add(node.val);
+                if (node.right != null) stack.Push(node.right);
+                if (node.left != null) stack.Push(node.left);
+            }
+            return res;
+        }
+
+        /// <summary>
+        /// <a href="https://leetcode.com/problems/binary-tree-postorder-traversal">145. Binary Tree Postorder Traversal (easy)</a>
+        /// Given the root of a binary tree, return the postorder traversal of its nodes' values.
+        /// </summary>
+        /// <param name="root"></param>
+        /// <returns></returns>
+        public IList<int> PostorderTraversal(TreeNode root)
+        {
+            List<int> res = new List<int>();
+            if (root == null) return res;
+            Stack<TreeNode> stack = new Stack<TreeNode>();
+            stack.Push(root);
+            while (stack.Count > 0)
+            {
+                TreeNode node = stack.Pop();
+
+                res.Insert(0,node.val);
+                if (node.left != null) stack.Push(node.left);
+                if (node.right != null) stack.Push(node.right);
+
+            }
+            return res;
+        }
     }
 }

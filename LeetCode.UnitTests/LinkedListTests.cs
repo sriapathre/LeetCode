@@ -1,5 +1,6 @@
 ﻿using LeetCode.Library;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 
 namespace LeetCode.UnitTests
 {
@@ -143,6 +144,51 @@ namespace LeetCode.UnitTests
             var expectedResult = CreateList(new int[] { 1, 2, 3, 4, 5 });
             var actualResult = linkedLists.DeleteDuplicates(CreateList(new int[] { 1, 2, 3, 4, 5 }));
             CompareLists(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void HasCycle_Test1()
+        {
+            // Arrange
+            var node3 = new ListNode(3);
+            var node2 = new ListNode(2, node3);
+            var node1 = new ListNode(1, node2);
+
+            // Act
+            var result = linkedLists.HasCycle(node1);
+
+            // Assert
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod]
+        public void HasCycle_Test2()
+        {
+            // Arrange
+            var node3 = new ListNode(3);
+            var node2 = new ListNode(2, node3);
+            var node1 = new ListNode(1, node2);
+            node3.next = node1; // Create a cycle
+
+            // Act
+            var result = linkedLists.HasCycle(node1);
+
+            // Assert
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void HasCycle_Test3()
+        {
+            // Arrange
+            var node = new ListNode(1);
+            node.next = node; // Create a cycle
+
+            // Act
+            var result = linkedLists.HasCycle(node);
+
+            // Assert
+            Assert.IsTrue(result);
         }
     }
 }
