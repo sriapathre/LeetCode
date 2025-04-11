@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml.Linq;
 
 namespace LeetCode.Library
 {
@@ -393,25 +394,35 @@ namespace LeetCode.Library
         }
 
         /// <summary>
-        /// <a href="">169. Majority Element (easy)</a>
+        /// <a href="https://leetcode.com/problems/majority-element/description/">169. Majority Element (easy)</a>
+        /// Given an array nums of size n, return the majority element.
+        /// The majority element is the element that appears more than ⌊n / 2⌋ times.You may assume that the majority element always exists in the array.
         /// </summary>
         /// <param name="nums"></param>
         /// <returns></returns>
         public int MajorityElement(int[] nums)
         {
-            Dictionary<int, int> dict = new Dictionary<int, int>();
-            foreach (int i in nums)
+            int count = 0;
+            int candidate = 0;
+
+            foreach (int num in nums)
             {
-                if (dict.ContainsKey(i))
+                if (count == 0)
                 {
-                    if (dict[i] + 1 > nums.Length / 2)
-                        return i;
-                    dict[i] += 1;
+                    candidate = num;
+                }
+
+                if (num == candidate)
+                {
+                    count++;
                 }
                 else
-                    dict.Add(i, 1);
+                {
+                    count--;
+                }
             }
-            return nums[0];
+
+            return candidate;
         }
 
         /// <summary>

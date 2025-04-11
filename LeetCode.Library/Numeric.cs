@@ -145,6 +145,48 @@ namespace LeetCode.Library
         }
 
         /// <summary>
+        /// <a href="https://leetcode.com/problems/reverse-bits/">190. Reverse Bits (easy)</a>
+        /// Reverse bits of a given 32 bits unsigned integer.
+        /// </summary>
+        /// <param name="n"></param>
+        /// <returns></returns>
+        public uint ReverseBits(uint n)
+        {
+            uint result = 0;
+
+            for (int i = 0; i < 32; i++)
+            {
+                if (n % 2 == 1)
+                    result++;
+
+                n = n >> 1;
+
+                //because for the 32nd bit, we don't want to left shift
+                if (i < 31)
+                    result = result << 1;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// <a href="https://leetcode.com/problems/number-of-1-bits/">191. Number of 1 Bits (easy)</a>
+        /// Given a positive integer n, write a function that returns the number of set bits in its binary representation (also known as the Hamming weight).
+        /// </summary>
+        /// <param name="n"></param>
+        /// <returns></returns>
+        public int HammingWeight(int n)
+        {
+            int cnt = 0;
+            while (n > 0)
+            {
+                if ((n & 1) == 1) cnt++;
+                n /= 2;
+            }
+            return cnt;
+        }
+
+        /// <summary>
         /// <a href="https://leetcode.com/problems/happy-number/">202. Happy Number (easy)</a>
         /// </summary>
         /// <param name="n"></param>

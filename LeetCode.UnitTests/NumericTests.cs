@@ -298,5 +298,45 @@ namespace LeetCode.UnitTests
             Assert.AreEqual(expectedResult.Count, actualResult.Count);
             Assert.IsTrue(expectedResult.SequenceEqual(actualResult));
         }
+
+        [TestMethod]
+        public void ReverseBits_Test1()
+        {
+            uint input = 0b00000010100101000001111010011100;
+            uint expectedResult = 964176192;
+            var actualResult = numeric.ReverseBits(input);
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void ReverseBits_Test2()
+        {
+            var expectedResult = 3221225471;
+            var actualResult = numeric.ReverseBits(4294967293);
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void HammingWeight_Test1()
+        {
+            var expectedResult = 3;
+            var actualResult = numeric.HammingWeight(11);
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void HammingWeight_Test2()
+        {
+            var expectedResult = 1;
+            var actualResult = numeric.HammingWeight(1);
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+        [TestMethod]
+        public void HammingWeight_Test3()
+        {
+            var expectedResult = 0;
+            var actualResult = numeric.HammingWeight(0);
+            Assert.AreEqual(expectedResult, actualResult);
+        }
     }
 }

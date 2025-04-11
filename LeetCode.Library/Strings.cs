@@ -165,7 +165,8 @@ namespace LeetCode.Library
         }
 
         /// <summary>
-        /// 171. Excel Sheet Column Number (easy)
+        /// <a href="https://leetcode.com/problems/excel-sheet-column-number/">171. Excel Sheet Column Number (easy)</a>
+        /// Given a string columnTitle that represents the column title as appears in an Excel sheet, return its corresponding column number.
         /// </summary>
         /// <param name="columnTitle"></param>
         /// <returns></returns>
