@@ -15,6 +15,22 @@ namespace LeetCode.Library
             this.val = val;
             this.next = next;
         }
+
+    }
+
+    public static class LinkedListsCommon
+    {
+        public static int GetLength(ListNode head)
+        {
+            int count = 1;
+            while (head != null)
+            {
+                count++;
+                head = head.next;
+            }
+
+            return count;
+        }
     }
 
     public class LinkedLists
@@ -92,6 +108,40 @@ namespace LeetCode.Library
                 if (slow == fast) return true;
             }
             return false;
+        }
+
+
+        /// <summary>
+        /// <a href="https://leetcode.com/problems/intersection-of-two-linked-lists/">160. Intersection of Two Linked Lists (easy)</a>
+        /// Given the heads of two singly linked-lists headA and headB, return the node at which the two lists intersect. If the two linked lists have no intersection at all, return null.
+        /// </summary>
+        /// <param name="headA"></param>
+        /// <param name="headB"></param>
+        /// <returns></returns>
+        public ListNode GetIntersectionNode(ListNode headA, ListNode headB)
+        {
+            int lengthA = LinkedListsCommon.GetLength(headA);
+            int lengthB = LinkedListsCommon.GetLength(headB);
+
+            while (lengthA > lengthB)
+            {
+                headA = headA.next;
+                lengthA--;
+            }
+
+            while (lengthB > lengthA)
+            {
+                headB = headB.next;
+                lengthB--;
+            }
+
+            while (headA != headB)
+            {
+                headA = headA.next;
+                headB = headB.next;
+            }
+
+            return headA;
         }
 
         /// <summary>

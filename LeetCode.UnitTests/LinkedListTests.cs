@@ -190,5 +190,49 @@ namespace LeetCode.UnitTests
             // Assert
             Assert.IsTrue(result);
         }
+
+        [TestMethod]
+        public void GetIntersectionNode_Test1()
+        {
+            // Arrange
+            var node3 = new ListNode(3);
+            var node2 = new ListNode(2, node3);
+            var node1 = new ListNode(1, node2);
+            var node5 = new ListNode(5);
+            var node4 = new ListNode(4, node5);
+            node5.next = node3; // Create an intersection
+            // Act
+            var result = linkedLists.GetIntersectionNode(node1, node4);
+            // Assert
+            Assert.AreEqual(node3, result);
+        }
+
+        [TestMethod]
+        public void GetIntersectionNode_Test2()
+        {
+            var node = new ListNode(1);
+            var node2 = new ListNode(2, node);
+            var node3 = new ListNode(3, node2);
+            var node4 = new ListNode(4, node3);
+            var node5 = new ListNode(5, node4);
+            var node6 = new ListNode(6, node5);
+            // Act
+            var result = linkedLists.GetIntersectionNode(node, node6);
+            // Assert
+            Assert.AreEqual(node, result);
+        }
+
+        [TestMethod]
+        public void GetIntersectionNode_Test3()
+        {
+            // Arrange
+            var node3 = new ListNode(3);
+            var node2 = new ListNode(2);
+            var node1 = new ListNode(1, node2);
+            // Act
+            var result = linkedLists.GetIntersectionNode(node3, node1);
+            // Assert
+            Assert.AreEqual(null, result);
+        }
     }
 }
