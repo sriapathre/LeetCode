@@ -41,6 +41,60 @@ namespace LeetCode.UnitTests
         }
 
         [TestMethod]
+        public void Reverse_Test1()
+        {
+            Assert.AreEqual(321, numeric.Reverse(123));
+        }
+
+        [TestMethod]
+        public void Reverse_Test2()
+        {
+            Assert.AreEqual(-321, numeric.Reverse(-123));
+        }
+
+        [TestMethod]
+        public void Reverse_Test3_Overflow()
+        {
+            Assert.AreEqual(0, numeric.Reverse(1534236469));
+        }
+
+        [TestMethod]
+        public void Divide_Test1()
+        {
+            Assert.AreEqual(3, numeric.Divide(10, 3));
+        }
+
+        [TestMethod]
+        public void Divide_Test2()
+        {
+            Assert.AreEqual(-2, numeric.Divide(7, -3));
+        }
+
+        [TestMethod]
+        public void Divide_Test3_MinValueOverflow()
+        {
+            Assert.AreEqual(int.MaxValue, numeric.Divide(int.MinValue, -1));
+        }
+
+        [TestMethod]
+        public void MyPow_Test1()
+        {
+            Assert.AreEqual(1024, numeric.MyPow(2, 10), 0.000001);
+        }
+
+        [TestMethod]
+        public void MyPow_Test2_NegativeExponent()
+        {
+            Assert.AreEqual(0.25, numeric.MyPow(2, -2), 0.000001);
+        }
+
+        [TestMethod]
+        public void MyPow_Test3_MinExponent()
+        {
+            Assert.AreEqual(1, numeric.MyPow(1, int.MinValue), 0.000001);
+        }
+
+        [TestMethod]
         public void CanWinNim_Test1()
         {
             var expectedResult = false;
@@ -208,6 +262,12 @@ namespace LeetCode.UnitTests
         }
 
         [TestMethod]
+        public void MySqrt_Test4_Zero()
+        {
+            Assert.AreEqual(0, numeric.MySqrt(0));
+        }
+
+        [TestMethod]
         public void ClimbStairs_Test1()
         {
             var expectedResult = 2;
@@ -297,6 +357,51 @@ namespace LeetCode.UnitTests
             var actualResult = numeric.GetRow(5);
             Assert.AreEqual(expectedResult.Count, actualResult.Count);
             Assert.IsTrue(expectedResult.SequenceEqual(actualResult));
+        }
+
+        [TestMethod]
+        public void GrayCode_Test1()
+        {
+            CollectionAssert.AreEqual(new List<int> { 0, 1, 3, 2 }, numeric.GrayCode(2).ToList());
+        }
+
+        [TestMethod]
+        public void GrayCode_Test2_ZeroBits()
+        {
+            CollectionAssert.AreEqual(new List<int> { 0 }, numeric.GrayCode(0).ToList());
+        }
+
+        [TestMethod]
+        public void GrayCode_Test3()
+        {
+            CollectionAssert.AreEqual(new List<int> { 0, 1, 3, 2, 6, 7, 5, 4 }, numeric.GrayCode(3).ToList());
+        }
+
+        [TestMethod]
+        public void NumTrees_Test1()
+        {
+            Assert.AreEqual(5, numeric.NumTrees(3));
+        }
+
+        [TestMethod]
+        public void NumTrees_Test2_ZeroNodes()
+        {
+            Assert.AreEqual(1, numeric.NumTrees(0));
+        }
+
+        [TestMethod]
+        public void NumTrees_Test3()
+        {
+            Assert.AreEqual( Catalan(19), numeric.NumTrees(19));
+        }
+
+        private static int Catalan(int n)
+        {
+            long result = 1;
+            for (int i = 1; i <= n; i++)
+                result = result * (n + i) / i;
+
+            return (int)(result / (n + 1));
         }
 
         [TestMethod]

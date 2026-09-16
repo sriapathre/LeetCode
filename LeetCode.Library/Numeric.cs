@@ -7,10 +7,29 @@ namespace LeetCode.Library
     public class Numeric
     {
         /// <summary>
-        /// <a href="https://leetcode.com/problems/palindrome-number">9. Palindrome Number (easy)</a>
+        /// <a href="https://leetcode.com/problems/reverse-integer/">7. Reverse Integer (medium)</a>
+        /// Given a signed 32-bit integer, reverse its digits and return 0 when the reversed value overflows.
         /// </summary>
-        /// <param name="x"></param>
-        /// <returns></returns>
+        /// <param name="x">The signed 32-bit integer to reverse.</param>
+        /// <returns>The reversed integer, or 0 if it overflows.</returns>
+        public int Reverse(int x)
+        {
+            long reversed = 0;
+            while (x != 0)
+            {
+                reversed = reversed * 10 + x % 10;
+                x /= 10;
+            }
+
+            return reversed < int.MinValue || reversed > int.MaxValue ? 0 : (int)reversed;
+        }
+
+        /// <summary>
+        /// <a href="https://leetcode.com/problems/palindrome-number/">9. Palindrome Number (easy)</a>
+        /// Determine whether an integer reads the same forward and backward without converting it to a string.
+        /// </summary>
+        /// <param name="x">The integer to check for palindrome symmetry.</param>
+        /// <returns><see langword="true"/> if the digits of <paramref name="x"/> form a palindrome; otherwise, <see langword="false"/>.</returns>
         public bool IsPalindrome(int x)
         {
             if (x < 0) return false;
@@ -28,14 +47,14 @@ namespace LeetCode.Library
         /// <a href="https://leetcode.com/problems/sqrtx/">69. Sqrt(x) (easy)</a>
         /// Given a non-negative integer x, return the square root of x rounded down to the nearest integer. The returned integer should be non-negative as well.
         /// </summary>
-        /// <param name="x"></param>
-        /// <returns></returns>
+        /// <param name="x">The non-negative integer whose integer square root is requested.</param>
+        /// <returns>The truncated square root of <paramref name="x"/>.</returns>
         public int MySqrt(int x)
         {
             long low, high;
-            low = 1;
+            low = 0;
             high = x;
-            long mid = (low + high) / 2; ;
+            long mid = (low + high) / 2;
 
             while (low <= high)
             {
@@ -51,12 +70,76 @@ namespace LeetCode.Library
         }
 
         /// <summary>
-        /// <a href"https://leetcode.com/problems/climbing-stairs/">70. Climbing Stairs (easy)</a>
-        /// You are climbing a staircase. It takes n steps to reach the top.
-        /// Each time you can either climb 1 or 2 steps.In how many distinct ways can you climb to the top?
+        /// <a href="https://leetcode.com/problems/divide-two-integers/">29. Divide Two Integers (medium)</a>
+        /// Divide two integers without using multiplication, division, or modulo, truncating the result toward zero.
         /// </summary>
-        /// <param name="n"></param>
-        /// <returns></returns>
+        /// <param name="dividend">The integer to divide.</param>
+        /// <param name="divisor">The non-zero divisor.</param>
+        /// <returns>The quotient clamped to the signed 32-bit integer range.</returns>
+        public int Divide(int dividend, int divisor)
+        {
+            long dividendValue = dividend;
+            long divisorValue = divisor;
+            bool negative = (dividendValue < 0) != (divisorValue < 0);
+            dividendValue = Math.Abs(dividendValue);
+            divisorValue = Math.Abs(divisorValue);
+            long quotient = 0;
+
+            while (dividendValue >= divisorValue)
+            {
+                long value = divisorValue;
+                long multiple = 1;
+                while (dividendValue >= value + value)
+                {
+                    value += value;
+                    multiple += multiple;
+                }
+
+                dividendValue -= value;
+                quotient += multiple;
+            }
+
+            if (negative)
+                quotient = -quotient;
+
+            return quotient > int.MaxValue ? int.MaxValue : (int)quotient;
+        }
+
+        /// <summary>
+        /// <a href="https://leetcode.com/problems/powx-n/">50. Pow(x, n) (medium)</a>
+        /// Return x raised to the power n using exponentiation by squaring.
+        /// </summary>
+        /// <param name="x">The base value.</param>
+        /// <param name="n">The signed exponent.</param>
+        /// <returns>x raised to the power n.</returns>
+        public double MyPow(double x, int n)
+        {
+            long exponent = n;
+            if (exponent < 0)
+            {
+                x = 1 / x;
+                exponent = -exponent;
+            }
+
+            double result = 1;
+            while (exponent > 0)
+            {
+                if ((exponent & 1) == 1)
+                    result *= x;
+
+                x *= x;
+                exponent >>= 1;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// <a href="https://leetcode.com/problems/climbing-stairs/">70. Climbing Stairs (easy)</a>
+        /// Count how many distinct ways there are to reach the top of a staircase with n steps when each move can climb 1 or 2 steps.
+        /// </summary>
+        /// <param name="n">The total number of steps to reach the top.</param>
+        /// <returns>The number of distinct ways to climb to step <paramref name="n"/>.</returns>
         public int ClimbStairs(int n)
         {
             if (n == 1)
@@ -75,10 +158,10 @@ namespace LeetCode.Library
 
         /// <summary>
         /// <a href="https://leetcode.com/problems/pascals-triangle/">118. Pascal's Triangle (easy)</a>
-        /// Given an integer numRows, return the first numRows of Pascal's triangle.
+        /// Generate the first numRows rows of Pascal's triangle.
         /// </summary>
-        /// <param name="numRows"></param>
-        /// <returns></returns>
+        /// <param name="numRows">The number of rows of Pascal's triangle to produce.</param>
+        /// <returns>A list containing the first <paramref name="numRows"/> rows of Pascal's triangle.</returns>
         public IList<IList<int>> Generate(int numRows)
         {
             List<IList<int>> result = new List<IList<int>>();
@@ -107,10 +190,10 @@ namespace LeetCode.Library
 
         /// <summary>
         /// <a href="https://leetcode.com/problems/pascals-triangle-ii/">119. Pascal's Triangle II (easy)</a>
-        /// Given an integer rowIndex, return the rowIndexth (0-indexed) row of the Pascal's triangle.
+        /// Return the rowIndexth row of Pascal's triangle using zero-based indexing.
         /// </summary>
-        /// <param name="rowIndex"></param>
-        /// <returns></returns>
+        /// <param name="rowIndex">The zero-based index of the Pascal's triangle row to return.</param>
+        /// <returns>The values in the requested row of Pascal's triangle.</returns>
         public IList<int> GetRow(int rowIndex)
         {
             var list = new List<int>(rowIndex + 1) { 1 };
@@ -126,11 +209,46 @@ namespace LeetCode.Library
         }
 
         /// <summary>
-        /// <a href="https://leetcode.com/problems/excel-sheet-column-title/description/">168. Excel Sheet Column Title</a>
-        /// Given an integer columnNumber, return its corresponding column title as it appears in an Excel sheet.
+        /// <a href="https://leetcode.com/problems/gray-code/">89. Gray Code (medium)</a>
+        /// Return an n-bit Gray code sequence in which adjacent values differ by one bit.
         /// </summary>
-        /// <param name="columnNumber"></param>
-        /// <returns></returns>
+        /// <param name="n">The number of bits.</param>
+        /// <returns>A sequence containing all 2^n Gray code values.</returns>
+        public IList<int> GrayCode(int n)
+        {
+            int count = 1 << n;
+            var result = new List<int>(count);
+            for (int value = 0; value < count; value++)
+                result.Add(value ^ (value >> 1));
+
+            return result;
+        }
+
+        /// <summary>
+        /// <a href="https://leetcode.com/problems/unique-binary-search-trees/">96. Unique Binary Search Trees (medium)</a>
+        /// Return the number of structurally unique binary search trees that store values 1 through n.
+        /// </summary>
+        /// <param name="n">The number of distinct values.</param>
+        /// <returns>The number of structurally unique binary search trees.</returns>
+        public int NumTrees(int n)
+        {
+            var counts = new long[n + 1];
+            counts[0] = 1;
+            for (int nodes = 1; nodes <= n; nodes++)
+            {
+                for (int leftNodes = 0; leftNodes < nodes; leftNodes++)
+                    counts[nodes] += counts[leftNodes] * counts[nodes - 1 - leftNodes];
+            }
+
+            return (int)counts[n];
+        }
+
+        /// <summary>
+        /// <a href="https://leetcode.com/problems/excel-sheet-column-title/">168. Excel Sheet Column Title (easy)</a>
+        /// Convert a positive column number into its corresponding Excel-style column title.
+        /// </summary>
+        /// <param name="columnNumber">The 1-based Excel column number to convert.</param>
+        /// <returns>The Excel column title for <paramref name="columnNumber"/>.</returns>
         public string ConvertToTitle(int columnNumber)
         {
             StringBuilder sb = new StringBuilder();
@@ -146,10 +264,10 @@ namespace LeetCode.Library
 
         /// <summary>
         /// <a href="https://leetcode.com/problems/reverse-bits/">190. Reverse Bits (easy)</a>
-        /// Reverse bits of a given 32 bits unsigned integer.
+        /// Reverse the bit order of a 32-bit unsigned integer.
         /// </summary>
-        /// <param name="n"></param>
-        /// <returns></returns>
+        /// <param name="n">The 32-bit unsigned integer whose bits should be reversed.</param>
+        /// <returns>The value produced by reversing the bits of <paramref name="n"/>.</returns>
         public uint ReverseBits(uint n)
         {
             uint result = 0;
@@ -171,10 +289,10 @@ namespace LeetCode.Library
 
         /// <summary>
         /// <a href="https://leetcode.com/problems/number-of-1-bits/">191. Number of 1 Bits (easy)</a>
-        /// Given a positive integer n, write a function that returns the number of set bits in its binary representation (also known as the Hamming weight).
+        /// Count the number of set bits in the binary representation of an integer.
         /// </summary>
-        /// <param name="n"></param>
-        /// <returns></returns>
+        /// <param name="n">The integer whose set bits should be counted.</param>
+        /// <returns>The number of 1 bits present in <paramref name="n"/>.</returns>
         public int HammingWeight(int n)
         {
             int cnt = 0;
@@ -188,9 +306,10 @@ namespace LeetCode.Library
 
         /// <summary>
         /// <a href="https://leetcode.com/problems/happy-number/">202. Happy Number (easy)</a>
+        /// Determine whether repeatedly replacing a number with the sum of the squares of its digits eventually reaches 1.
         /// </summary>
-        /// <param name="n"></param>
-        /// <returns></returns>
+        /// <param name="n">The positive integer to evaluate.</param>
+        /// <returns><see langword="true"/> if the process ends at 1; otherwise, <see langword="false"/>.</returns>
         public bool IsHappy(int n)
         {
             if (n == 1)
@@ -218,10 +337,10 @@ namespace LeetCode.Library
 
         /// <summary>
         /// <a href="https://leetcode.com/problems/nim-game/">292. Nim Game (easy)</a>
-        /// Given n, the number of stones in the heap, return true if you can win the game assuming both you and your friend play optimally, otherwise return false.
+        /// Determine whether the starting player can force a win in Nim when 1 to 3 stones may be removed each turn.
         /// </summary>
-        /// <param name="n"></param>
-        /// <returns></returns>
+        /// <param name="n">The number of stones in the heap at the start of the game.</param>
+        /// <returns><see langword="true"/> if the first player can force a win; otherwise, <see langword="false"/>.</returns>
         public bool CanWinNim(int n)
         {
             return n % 4 != 0;
@@ -229,9 +348,10 @@ namespace LeetCode.Library
 
         /// <summary>
         /// <a href="https://leetcode.com/problems/power-of-three/">326. Power of Three (easy)</a>
+        /// Determine whether an integer is an exact power of three.
         /// </summary>
-        /// <param name="n"></param>
-        /// <returns></returns>
+        /// <param name="n">The integer to test.</param>
+        /// <returns><see langword="true"/> if <paramref name="n"/> equals 3 raised to some non-negative power; otherwise, <see langword="false"/>.</returns>
         public bool IsPowerOfThree(int n)
         {
             if (n == 0)
@@ -256,9 +376,10 @@ namespace LeetCode.Library
 
         /// <summary>
         /// <a href="https://leetcode.com/problems/fizz-buzz/">412. Fizz Buzz (easy)</a>
+        /// Produce the numbers from 1 through n, replacing multiples of 3 with Fizz, multiples of 5 with Buzz, and multiples of both with FizzBuzz.
         /// </summary>
-        /// <param name="n"></param>
-        /// <returns></returns>
+        /// <param name="n">The inclusive upper bound of the sequence to generate.</param>
+        /// <returns>A list of FizzBuzz strings for the values from 1 through <paramref name="n"/>.</returns>
         public IList<string> FizzBuzz(int n)
         {
             List<string> result = new List<string>();
@@ -278,9 +399,10 @@ namespace LeetCode.Library
 
         /// <summary>
         /// <a href="https://leetcode.com/problems/arranging-coins/">441. Arranging Coins (easy)</a>
+        /// Determine how many complete staircase rows can be formed from n coins when each row uses one more coin than the previous row.
         /// </summary>
-        /// <param name="n"></param>
-        /// <returns></returns>
+        /// <param name="n">The total number of coins available.</param>
+        /// <returns>The number of complete rows that can be formed.</returns>
         public int ArrangeCoins(int n)
         {
             int l = 1, r = n;

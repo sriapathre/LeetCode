@@ -42,6 +42,9 @@ namespace LeetCode.UnitTests
                 expectedResult = expectedResult.next;
                 actualResult = actualResult.next;
             }
+
+            Assert.IsNull(expectedResult);
+            Assert.IsNull(actualResult);
         }
 
         [TestMethod]
@@ -233,6 +236,98 @@ namespace LeetCode.UnitTests
             var result = linkedLists.GetIntersectionNode(node3, node1);
             // Assert
             Assert.AreEqual(null, result);
+        }
+
+        [TestMethod]
+        public void AddTwoNumbers_HandlesCarryAndEmptyLists()
+        {
+            CompareLists(CreateList(new[] { 7, 0, 8 }),
+                linkedLists.AddTwoNumbers(CreateList(new[] { 2, 4, 3 }), CreateList(new[] { 5, 6, 4 })));
+            CompareLists(CreateList(new[] { 0 }), linkedLists.AddTwoNumbers(null, new ListNode(0)));
+            CompareLists(CreateList(new[] { 0, 0, 0, 1 }),
+                linkedLists.AddTwoNumbers(CreateList(new[] { 9, 9, 9 }), new ListNode(1)));
+        }
+
+        [TestMethod]
+        public void RemoveNthFromEnd_RemovesHeadMiddleAndOnlyNode()
+        {
+            CompareLists(CreateList(new[] { 1, 2, 3, 5 }),
+                linkedLists.RemoveNthFromEnd(CreateList(new[] { 1, 2, 3, 4, 5 }), 2));
+            CompareLists(CreateList(new[] { 2, 3 }),
+                linkedLists.RemoveNthFromEnd(CreateList(new[] { 1, 2, 3 }), 3));
+            Assert.IsNull(linkedLists.RemoveNthFromEnd(new ListNode(1), 1));
+        }
+
+        [TestMethod]
+        public void MergeKLists_MergesMultipleAndHandlesEmptyInput()
+        {
+            CompareLists(CreateList(new[] { 1, 1, 2, 3, 4, 4, 5, 6 }),
+                linkedLists.MergeKLists(new[]
+                {
+                    CreateList(new[] { 1, 4, 5 }),
+                    CreateList(new[] { 1, 3, 4 }),
+                    CreateList(new[] { 2, 6 })
+                }));
+            Assert.IsNull(linkedLists.MergeKLists(null));
+            Assert.IsNull(linkedLists.MergeKLists(new ListNode[] { null, null }));
+        }
+
+        [TestMethod]
+        public void SwapPairs_SwapsCompleteAndIncompletePairs()
+        {
+            CompareLists(CreateList(new[] { 2, 1, 4, 3 }),
+                linkedLists.SwapPairs(CreateList(new[] { 1, 2, 3, 4 })));
+            CompareLists(CreateList(new[] { 2, 1, 3 }),
+                linkedLists.SwapPairs(CreateList(new[] { 1, 2, 3 })));
+            Assert.IsNull(linkedLists.SwapPairs(null));
+        }
+
+        [TestMethod]
+        public void ReverseKGroup_ReversesOnlyCompleteGroups()
+        {
+            CompareLists(CreateList(new[] { 2, 1, 4, 3, 5 }),
+                linkedLists.ReverseKGroup(CreateList(new[] { 1, 2, 3, 4, 5 }), 2));
+            CompareLists(CreateList(new[] { 3, 2, 1, 6, 5, 4 }),
+                linkedLists.ReverseKGroup(CreateList(new[] { 1, 2, 3, 4, 5, 6 }), 3));
+            CompareLists(CreateList(new[] { 1, 2 }), linkedLists.ReverseKGroup(CreateList(new[] { 1, 2 }), 3));
+        }
+
+        [TestMethod]
+        public void RotateRight_RotatesAndReducesLargeK()
+        {
+            CompareLists(CreateList(new[] { 4, 5, 1, 2, 3 }),
+                linkedLists.RotateRight(CreateList(new[] { 1, 2, 3, 4, 5 }), 2));
+            CompareLists(CreateList(new[] { 2, 0, 1 }),
+                linkedLists.RotateRight(CreateList(new[] { 0, 1, 2 }), 4));
+            Assert.IsNull(linkedLists.RotateRight(null, 10));
+        }
+
+        [TestMethod]
+        public void DeleteDuplicatesII_RemovesAllRepeatedValues()
+        {
+            CompareLists(CreateList(new[] { 1, 2, 5 }),
+                linkedLists.DeleteDuplicatesII(CreateList(new[] { 1, 2, 3, 3, 4, 4, 5 })));
+            Assert.IsNull(linkedLists.DeleteDuplicatesII(CreateList(new[] { 1, 1, 1 })));
+            CompareLists(CreateList(new[] { 1, 2 }), linkedLists.DeleteDuplicatesII(CreateList(new[] { 1, 2 })));
+        }
+
+        [TestMethod]
+        public void Partition_PreservesOrderAroundPivot()
+        {
+            CompareLists(CreateList(new[] { 1, 2, 2, 4, 3, 5 }),
+                linkedLists.Partition(CreateList(new[] { 1, 4, 3, 2, 5, 2 }), 3));
+            CompareLists(CreateList(new[] { 1, 2, 3 }), linkedLists.Partition(CreateList(new[] { 1, 2, 3 }), 0));
+            Assert.IsNull(linkedLists.Partition(null, 3));
+        }
+
+        [TestMethod]
+        public void ReverseBetween_ReversesRangeAndHandlesSinglePosition()
+        {
+            CompareLists(CreateList(new[] { 1, 4, 3, 2, 5 }),
+                linkedLists.ReverseBetween(CreateList(new[] { 1, 2, 3, 4, 5 }), 2, 4));
+            CompareLists(CreateList(new[] { 3, 2, 1 }),
+                linkedLists.ReverseBetween(CreateList(new[] { 1, 2, 3 }), 1, 3));
+            CompareLists(CreateList(new[] { 1, 2 }), linkedLists.ReverseBetween(CreateList(new[] { 1, 2 }), 2, 2));
         }
     }
 }

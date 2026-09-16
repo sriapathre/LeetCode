@@ -28,11 +28,11 @@ namespace LeetCode.Library
     public class Trees
     {
         /// <summary>
-        /// 94. Binary Tree Inorder Traversal (easy)
-        /// Given the root of a binary tree, return the inorder traversal of its nodes' values.
+        /// <a href="https://leetcode.com/problems/binary-tree-inorder-traversal/">94. Binary Tree Inorder Traversal (easy)</a>
+        /// Given the root of a binary tree, return the inorder traversal of its nodes' values from left subtree to root to right subtree.
         /// </summary>
-        /// <param name="root"></param>
-        /// <returns></returns>
+        /// <param name="root">The root of the binary tree to traverse.</param>
+        /// <returns>The inorder sequence of node values.</returns>
         public IList<int> InorderTraversal(TreeNode root)
         {
             var result = new List<int>();
@@ -51,13 +51,12 @@ namespace LeetCode.Library
         }
 
         /// <summary>
-        /// 100. Same Tree (easy)
-        /// Given the roots of two binary trees p and q, write a function to check if they are the same or not.
-        /// Two binary trees are considered the same if they are structurally identical, and the nodes have the same value.
+        /// <a href="https://leetcode.com/problems/same-tree/">100. Same Tree (easy)</a>
+        /// Given the roots of two binary trees, determine whether they are structurally identical and contain the same value at each corresponding node.
         /// </summary>
-        /// <param name="p"></param>
-        /// <param name="q"></param>
-        /// <returns></returns>
+        /// <param name="p">The root of the first binary tree.</param>
+        /// <param name="q">The root of the second binary tree.</param>
+        /// <returns><c>true</c> if both trees have the same structure and node values.</returns>
         public bool IsSameTree(TreeNode p, TreeNode q)
         {
             if (p == null && q == null)
@@ -70,11 +69,88 @@ namespace LeetCode.Library
         }
 
         /// <summary>
-        /// 101. Symmetric Tree (easy)
-        /// Given the root of a binary tree, check whether it is a mirror of itself (i.e., symmetric around its center).
+        /// <a href="https://leetcode.com/problems/validate-binary-search-tree/">98. Validate Binary Search Tree (medium)</a>
+        /// Determine whether a binary tree is a valid binary search tree. Every value in the left subtree
+        /// must be smaller than the node value, and every value in the right subtree must be larger.
+        /// Example: [2,1,3] is valid; [5,1,4,null,null,3,6] is not.
+        /// Runs in O(n) time and O(h) space, where h is the tree height.
         /// </summary>
-        /// <param name="root"></param>
-        /// <returns></returns>
+        /// <param name="root">The root of the binary tree.</param>
+        /// <returns><c>true</c> when the tree satisfies binary search tree ordering.</returns>
+        public bool IsValidBST(TreeNode root)
+        {
+            var stack = new Stack<TreeNode>();
+            TreeNode previous = null;
+            TreeNode current = root;
+
+            while (current != null || stack.Count > 0)
+            {
+                while (current != null)
+                {
+                    stack.Push(current);
+                    current = current.left;
+                }
+
+                current = stack.Pop();
+                if (previous != null && current.val <= previous.val)
+                    return false;
+
+                previous = current;
+                current = current.right;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// <a href="https://leetcode.com/problems/recover-binary-search-tree/">99. Recover Binary Search Tree (hard)</a>
+        /// Recover a binary search tree whose two node values were swapped by mistake without changing
+        /// its structure. For example, [1,3,null,null,2] is recovered by swapping 1 and 3.
+        /// Runs in O(n) time and O(h) space, where h is the tree height.
+        /// </summary>
+        /// <param name="root">The root of the corrupted binary search tree.</param>
+        public void RecoverTree(TreeNode root)
+        {
+            var stack = new Stack<TreeNode>();
+            TreeNode current = root;
+            TreeNode previous = null;
+            TreeNode first = null;
+            TreeNode second = null;
+
+            while (current != null || stack.Count > 0)
+            {
+                while (current != null)
+                {
+                    stack.Push(current);
+                    current = current.left;
+                }
+
+                current = stack.Pop();
+                if (previous != null && current.val < previous.val)
+                {
+                    if (first == null)
+                        first = previous;
+                    second = current;
+                }
+
+                previous = current;
+                current = current.right;
+            }
+
+            if (first != null && second != null)
+            {
+                int value = first.val;
+                first.val = second.val;
+                second.val = value;
+            }
+        }
+
+        /// <summary>
+        /// <a href="https://leetcode.com/problems/symmetric-tree/">101. Symmetric Tree (easy)</a>
+        /// Given the root of a binary tree, determine whether it is a mirror of itself around its center.
+        /// </summary>
+        /// <param name="root">The root of the binary tree to check for symmetry.</param>
+        /// <returns><c>true</c> if the tree is symmetric around its center.</returns>
         public bool IsSymmetric(TreeNode root)
         {
             if (root == null)
@@ -93,12 +169,11 @@ namespace LeetCode.Library
         }
 
         /// <summary>
-        /// 104. Maximum Depth of Binary Tree (easy)
-        /// Given the root of a binary tree, return its maximum depth.
-        /// A binary tree's maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node
+        /// <a href="https://leetcode.com/problems/maximum-depth-of-binary-tree/">104. Maximum Depth of Binary Tree (easy)</a>
+        /// Given the root of a binary tree, return the number of nodes along the longest path from the root down to the farthest leaf node.
         /// </summary>
-        /// <param name="root"></param>
-        /// <returns></returns>
+        /// <param name="root">The root of the binary tree to measure.</param>
+        /// <returns>The maximum depth of the binary tree.</returns>
         public int MaxDepth(TreeNode root)
         {
             if (root == null)
@@ -122,10 +197,11 @@ namespace LeetCode.Library
         }
 
         /// <summary>
-        /// 108. Convert Sorted Array to Binary Search Tree (easy)
+        /// <a href="https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/">108. Convert Sorted Array to Binary Search Tree (easy)</a>
+        /// Given an integer array sorted in ascending order, convert it into a height-balanced binary search tree.
         /// </summary>
-        /// <param name="nums"></param>
-        /// <returns></returns>
+        /// <param name="nums">The ascending sorted values used to build the binary search tree.</param>
+        /// <returns>The root of the height-balanced binary search tree.</returns>
         public TreeNode SortedArrayToBST(int[] nums)
         {
             return SortedArrayToBST(nums, 0, nums.Length - 1);
@@ -143,11 +219,11 @@ namespace LeetCode.Library
         }
 
         /// <summary>
-        /// 110. Balanced Binary Tree (easy)
-        /// Given a binary tree, determine if it is height-balanced.
+        /// <a href="https://leetcode.com/problems/balanced-binary-tree/">110. Balanced Binary Tree (easy)</a>
+        /// Given a binary tree, determine whether it is height-balanced so the depths of every node's two subtrees differ by no more than one.
         /// </summary>
-        /// <param name="root"></param>
-        /// <returns></returns>
+        /// <param name="root">The root of the binary tree to validate.</param>
+        /// <returns><c>true</c> if the binary tree is height-balanced.</returns>
         public bool IsBalanced(TreeNode root)
         {
             return root != null ? IsBalanced(root.left) && IsBalanced(root.right) && Math.Abs(TreeHeight(root.left) - TreeHeight(root.right)) < 2 : true;
@@ -159,12 +235,11 @@ namespace LeetCode.Library
         }
 
         /// <summary>
-        /// 111. Minimum Depth of Binary Tree (easy)
-        /// Given a binary tree, find its minimum depth.
-        /// The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.
+        /// <a href="https://leetcode.com/problems/minimum-depth-of-binary-tree/">111. Minimum Depth of Binary Tree (easy)</a>
+        /// Given the root of a binary tree, return the number of nodes along the shortest path from the root down to the nearest leaf node.
         /// </summary>
-        /// <param name="root"></param>
-        /// <returns></returns>
+        /// <param name="root">The root of the binary tree to measure.</param>
+        /// <returns>The minimum depth of the binary tree.</returns>
         public int MinDepth(TreeNode root)
         {
             if (root == null)
@@ -186,12 +261,12 @@ namespace LeetCode.Library
             MinDepth(root.right, v + 1, ref minDepth);
         }
         /// <summary>
-        /// 112. Path Sum (easy)
-        /// Given the root of a binary tree and an integer targetSum, return true if the tree has a root-to-leaf path such that adding up all the values along the path equals targetSum.
+        /// <a href="https://leetcode.com/problems/path-sum/">112. Path Sum (easy)</a>
+        /// Given the root of a binary tree and a target sum, determine whether any root-to-leaf path adds up to that value.
         /// </summary>
-        /// <param name="root"></param>
-        /// <param name="targetSum"></param>
-        /// <returns></returns>
+        /// <param name="root">The root of the binary tree to search.</param>
+        /// <param name="targetSum">The required sum of the values along a root-to-leaf path.</param>
+        /// <returns><c>true</c> if at least one root-to-leaf path sums to <paramref name="targetSum"/>.</returns>
         public bool HasPathSum(TreeNode root, int targetSum)
         {
             if (root == null)
@@ -207,11 +282,11 @@ namespace LeetCode.Library
         }
 
         /// <summary>
-        /// <a href="https://leetcode.com/problems/binary-tree-preorder-traversal">144. Binary Tree Preorder Traversal (easy)</a>
-        /// Given the root of a binary tree, return the preorder traversal of its nodes' values.
+        /// <a href="https://leetcode.com/problems/binary-tree-preorder-traversal/">144. Binary Tree Preorder Traversal (easy)</a>
+        /// Given the root of a binary tree, return the preorder traversal of its nodes' values in root-left-right order.
         /// </summary>
-        /// <param name="root"></param>
-        /// <returns></returns>
+        /// <param name="root">The root of the binary tree to traverse.</param>
+        /// <returns>The preorder sequence of node values.</returns>
         public IList<int> PreorderTraversal(TreeNode root)
         {
             List<int> res = new List<int>();
@@ -230,11 +305,11 @@ namespace LeetCode.Library
         }
 
         /// <summary>
-        /// <a href="https://leetcode.com/problems/binary-tree-postorder-traversal">145. Binary Tree Postorder Traversal (easy)</a>
-        /// Given the root of a binary tree, return the postorder traversal of its nodes' values.
+        /// <a href="https://leetcode.com/problems/binary-tree-postorder-traversal/">145. Binary Tree Postorder Traversal (easy)</a>
+        /// Given the root of a binary tree, return the postorder traversal of its nodes' values in left-right-root order.
         /// </summary>
-        /// <param name="root"></param>
-        /// <returns></returns>
+        /// <param name="root">The root of the binary tree to traverse.</param>
+        /// <returns>The postorder sequence of node values.</returns>
         public IList<int> PostorderTraversal(TreeNode root)
         {
             List<int> res = new List<int>();

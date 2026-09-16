@@ -87,6 +87,51 @@ namespace LeetCode.UnitTests
         }
 
         [TestMethod]
+        public void IsValidBST_Test1()
+        {
+            var root = new TreeNode(2, new TreeNode(1), new TreeNode(3));
+            Assert.IsTrue(trees.IsValidBST(root));
+        }
+
+        [TestMethod]
+        public void IsValidBST_Test2()
+        {
+            var root = new TreeNode(5, new TreeNode(1), new TreeNode(4, new TreeNode(3), new TreeNode(6)));
+            Assert.IsFalse(trees.IsValidBST(root));
+        }
+
+        [TestMethod]
+        public void IsValidBST_Test3()
+        {
+            var root = new TreeNode(int.MaxValue, new TreeNode(int.MinValue));
+            Assert.IsTrue(trees.IsValidBST(root));
+            Assert.IsTrue(trees.IsValidBST(null));
+        }
+
+        [TestMethod]
+        public void RecoverTree_Test1()
+        {
+            var root = new TreeNode(1, new TreeNode(3, null, new TreeNode(2)));
+            trees.RecoverTree(root);
+            Assert.IsTrue(trees.IsSameTree(new TreeNode(3, new TreeNode(1, null, new TreeNode(2))), root));
+        }
+
+        [TestMethod]
+        public void RecoverTree_Test2()
+        {
+            var root = new TreeNode(3, new TreeNode(1), new TreeNode(4, new TreeNode(2)));
+            trees.RecoverTree(root);
+            Assert.IsTrue(trees.IsSameTree(new TreeNode(2, new TreeNode(1), new TreeNode(4, new TreeNode(3))), root));
+        }
+
+        [TestMethod]
+        public void RecoverTree_Test3()
+        {
+            trees.RecoverTree(null);
+            Assert.IsTrue(trees.IsValidBST(null));
+        }
+
+        [TestMethod]
         public void IsSymmetric_Test1()
         {
             TreeNode root = new TreeNode(1, new TreeNode(2, new TreeNode(3), new TreeNode(4)), new TreeNode(2, new TreeNode(4), new TreeNode(3)));
